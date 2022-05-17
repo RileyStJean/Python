@@ -25,55 +25,6 @@ alecwlcome = ("Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot",
 #will display a input form when user get something wrong
 alecwrong = ("Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot",)
  
-def addadmin():
-            
-            INPUT = input("are you sure you want to add a user y or n : ")
-            
-            if(INPUT == "n") or (INPUT == "N"):
-                AdminMenu()
-
-            if (INPUT == "y") or (INPUT == "Y"):
-
-                Username = input("Enter in a Username : ")
-
-                pathanmae = r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\adminusers.txt"
-            
-                fileesits = os.path.exists(pathanmae)
-
-                if(fileesits == False):
-                    filecreate = open(r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\adminusers.txt","x")
-                    filecreate.close
-
-
-                test = True
-
-                while(test == True):
-                    Pathaname = r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files"
-                
-                    Passwords = input("Plaese enter a password equal or less then 8 : ")
-                    passwordlenght = len(Passwords)
-                    
-                    if (passwordlenght == 8 ):
-                        test = False
-
-                        fileusepathname = open(r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\adminusers.txt","w")
-                        fileusepathname.write(Passwords)
-                        fileusepathname.close()
-                        clear
-                        test = False
-                    
-
-                pathaname = r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\-" + Username + ".txt"
-
-                filecreate = open(pathaname,"x")
-                
-                fileequals = open(pathaname,"w")
-                fileequals.write("Username : " + Username + "\nPassword : " + Passwords)
-                fileequals.close
-
-                print("new admin has be added")
-            
-            else: print("what you have entered is nmot part of the program")
 
 def math():
     print("--------Math-Menu--------")
@@ -150,10 +101,10 @@ def AdminMenu():
     if(iftest == TRUE):
         dirtest.remove("desktop.ini")
 
-    admin = FALSE
+    admin1 = FALSE
     
     
-    while(admin == FALSE):
+    while(admin1 == FALSE):
         
         ifpassword = getpass.getpass('Please enter in Password : ')
 
@@ -178,32 +129,135 @@ def AdminMenu():
             a = readfile.readline()
             Adminpassword = readfile.readline()
 
-            Name = Name.strip("\n")
-            Adminpassword = Adminpassword.strip("\n")
+            Name = Name.strip("\n" + "Username : ")
+            Adminpassword = Adminpassword.strip("\n" + "Password : ")
     
             if (ifpassword == Adminpassword):
+                admin1 = TRUE
                 admin = TRUE
                 if(admin):
-                    while(admin)
+                    while(admin == TRUE):
                         print("-------Admin-Menu-------")
                         print("1 :add a admin")
                         print("2 :cheack to see message")
                         print("3 :message someone")
-                        print("")
+                        print("4 :Change password")
                         print("------------------------")
                         print("[m]to got to prevoise menu and [q] to quit")
 
                         inputt = input("Please enter in a number from above : ")
                         
                         if(inputt == "1"):
-                            addadmin()
+                            #making a statmemt for my loop
+                            adduser = TRUE
+                            #starting my loop
+                            while(adduser == TRUE):
+                                
+                                #making sure the they want to make a admin with a yes or no
+                                INPUT = input("are you sure you want to add a user y or n : ")
 
+                                #Testing if they did no/n/N
+                                if(INPUT == "n") or (INPUT == "N"):
+                                    #bracking them out of the if statment
+                                    AdminMenu
+                                    #testing if they said yes or y/Y
+                                if (INPUT == "y") or (INPUT == "Y"):
+                                    
+                                    #asking them what the name will be for the new user
+                                    Username = input("Enter in a Username : ")
+
+                                    #puttung a path name to lisk all the in the adminsitator.txt
+                                    pathanmae1 = r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\adminusers.txt"
+                                    #testing to see if it exist
+                                    fileesits = os.path.exists(pathanmae1)
+                                    
+                                    #creating if if statemte if it does not exist
+                                    if(fileesits == False):
+                                        #creting the file if it does not exist
+                                        filecreate = open(r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\adminusers.txt","x")
+                                        #Closeing the file
+                                        filecreate.close
+                                    
+                                    Passwords = getpass.getpass("Plaese enter a password equal or grather then 8 : ")
+                                    passwordlenght = len(Passwords)
+                                        #testing the password lenth to make sure it is grather then or equal to 8
+                                    if (passwordlenght >= 8 ):
+
+                                        good = TRUE
+
+                                        count = -1
+                                        for list in dirtest:
+                                    
+                                            count = count + 1
+
+                                            dirtestL = dirtestL - 1
+
+                                            filethings = dirtest[count]
+
+                                            Files = filethings.strip("-")
+
+
+                                            pathaname = r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\-" + Files
+
+
+                                            readfile = open(pathaname,"r")
+                                            Name = readfile.readline()
+                                            a = readfile.readline()
+                                            Adminpassword = readfile.readline()
+
+                                            Name = Name.strip("\n" + "Username : ")
+                                            Adminpassword = Adminpassword.strip("\n" + "Password : ")
+                                    
+                                            if (Passwords == Adminpassword):
+                                                print("sorry the password you have entered incorect please enter in another one ")
+                                                good = FALSE
+                                            if(Name == Username):
+                                                good = FALSE
+                                                print("The username does not meet the requirements or are already in uses")
+                                            if(count == dirtestL): 
+                                                break
+                                        if(good == TRUE):
+
+                                            adminpathusers = r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\adminusers.txt"
+
+                                            line = open(adminpathusers,"r")
+
+
+                                            skipline =  "\n"
+                                            for yes in line: 
+
+                                                skipline = skipline + "\n"
+
+
+                                            line.close
+
+                                            line = open(adminpathusers,"a")
+                                            line.write(Username)
+                                            line.close
+                                        
+                                            pathanameCreate = r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\-" + Username + ".txt"
+
+                                            filecreate = open(pathanameCreate,"x")
+                                            filecreate.close
+
+                                            fileadd = open(pathanameCreate,"a")
+                                            fileadd.write("Username : " + Username + "\nPassword : " + Passwords)
+                                            
+
+                                            print("new admin has be added")
+                                            adduser = FALSE
+                                    
+                                    else:print("What you have entered is incorect")
+
+                                else:print("What you have entered is incorect")
+                
                         elif(inputt == "2"):
                             msgcheck = open(pathaname,"r")
                             msgcheck.read()
 
                         elif(inputt == "3"):
-                            print("correct Upper and lower case needed")
+                            print("correct Upper and lower case needed") 
+                            print("")
                             othername = input("Please enter users name you wish to meassage : ")
 
                             anotherpathaname =  r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\-" + othername + ".txt"
@@ -215,17 +269,41 @@ def AdminMenu():
                             
                             else:
 
-                                inputtt = input("Plsae enter your the message")
+                                inputtt = input("Plsae enter your the message you want to send : ")
 
-                                msgother = open(anotherpathaname,"w")
-                                msgother.write("\n" + "\n" + "\n" + Name +" : " + inputtt)
+
+                                line = open(anotherpathaname,"r")
+
+
+                                skipline =  "\n"
+
+                                for yes in line: 
+
+                                    skipline = skipline + "\n"
+
+
+                                line.close
+
+                                line = open(anotherpathaname,"a")
+                                line.write("\n" +"\n" + Name + " : " +inputtt)
+
+                                print("Message has been sent")
                             
-
                         elif(inputt == "m") or (inputt == "M"):
+                            admin = FALSE
                             menu1
 
                         elif(inputt == "q") or (inputt == "Q"):
-                            quit
+                            admin = FALSE
+                            clear
+                            exit
+                        elif(inputt == "pause"):
+
+                            if(Name == "Riley"):
+                                theinput = input("greetings Riley who is it you would like to pause or unpause : ")
+
+
+                                
 
 
             if(count == dirtestL):
@@ -234,13 +312,6 @@ def AdminMenu():
                 if(admin == FALSE):
                     menu1()
 
-    print("-------Admin-Menu-------")
-    print("1 :add a admin")
-    print("2 :cheack to see message")
-    print("3 :message someone")
-    print("h :Help")
-    print("------------------------")
-    print("[m]to got to prevoise menu and [q] to quit")
 
 def helpfulmenu():
     print("Work in progress")
@@ -249,43 +320,48 @@ def helpmenu():
     print("Work in progress")
 
 def functioninput1(): 
-    print("Work in progress")
+    
+    yes = TRUE
 
-    intP = input("Please enter a number or letter from above : ")
+    while(yes == TRUE):
 
-    if(intP == "Q"):
-        intP = intP.lower
+        intP = input("Please enter a number or letter from above : ")
 
-    if(intP == "N"):
-        intP = intP.lower
+        if(intP == "Q"):
+            intP = intP.lower
 
-    if(intP == "0"):
-        todaysdate = datetime.today
-        print("Alec_Bot: todays date :",todaysdate)
+        if(intP == "N"):
+            intP = intP.lower
 
-    elif(intP == "1"):
-        math()
-    elif(intP == "2"):
-        #Games()
-        print("Work in progress")
-    elif(intP == "3"):
-        AdminMenu()
+        if(intP == "0"):
+            todaysdate = datetime.today
+            print("Alec_Bot: todays date :",todaysdate)
 
-    elif(intP == "4"):
-        os.startfile(r"C:\Users\Rstjean\Documents\Command Scripts\Python\Python_Notes.py")
-        exit
-    elif(intP == "5"):
-       menu1()
-    elif(intP == "q"):
-        exit
-    elif(intP == "6"):
-        helpfulmenu()
-    elif(intP == "n"):
-        menu2()
-    elif(intP == "7"):
-        os.startfile(r"C:\Users\Rstjean\Documents\Command Scripts\Python\Python_Notes.py")
-        exit
-    else:print (alecwrong)
+        elif(intP == "1"):
+            math()
+        elif(intP == "2"):
+            #Games()
+            print("Work in progress")
+        elif(intP == "3"):
+            AdminMenu()
+
+        elif(intP == "4"):
+            os.startfile(r"C:\Users\Rstjean\Documents\Command Scripts\Python\Python_Notes.py")
+            exit
+        elif(intP == "5"):
+            menu1()
+        elif(intP == "q") or (intP == "Q"):
+            yes = FALSE
+            clear
+            exit
+        elif(intP == "6"):
+            helpfulmenu()
+        elif(intP == "n"):
+            menu2()
+        elif(intP == "7"):
+            os.startfile(r"C:\Users\Rstjean\Documents\Command Scripts\Python\Python_Notes.py")
+            exit
+        else:print (alecwrong)
 
 
 def menu2():
