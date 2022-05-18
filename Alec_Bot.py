@@ -1,9 +1,10 @@
+#------------Start
 #File Name : Alec_Bot.py
-#
-#
-#
-#Purpose This will be a alec bot that will be equvlent to a master menu
+#Author : Riley St. Jean
+#Purpose This will be a alec bot that will be equvlent to a master menu for all my code
+#-------------End
 
+#All the stuff i am importing for this code 
 from ast import Break, Return
 from datetime import date, datetime
 import os
@@ -19,6 +20,7 @@ from pathlib import Path
 from os import listdir
 from importlib.resources import path
 import getpass
+#end of me importing the stuff
 
 #this is a arry that will be displayed a random to welcom the user
 alecwlcome = ("Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot",)
@@ -27,15 +29,19 @@ alecwrong = ("Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","
  
 
 def math():
+    #starting of the math function by displaying a menu of what you can do
     print("--------Math-Menu--------")
     print("0 : Times a number 50 times")
     print("1 : -,+,*,/ two Numbers")
     print("m : to go back to menu")
     print("------------------------")
     print("q to quite the program")
-
+    
+    #asking for input for what the user wants to do
     I = input("Please choose a number or letter from above : ")
+    #doing a if statemte for if there is a capitals to make it lowercase if M/Q
     if(I == "Q") or (I == "M"):
+     #making it lowercase
         I = I.lower
 
     if(I == "0"):
