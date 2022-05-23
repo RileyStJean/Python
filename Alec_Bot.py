@@ -1,16 +1,16 @@
-#------------Start
 #File Name : Alec_Bot.py
-#Author : Riley St. Jean
-#Purpose This will be a alec bot that will be equvlent to a master menu for all my code
-#-------------End
+#
+#
+#
+#Purpose This will be a alec bot that will be equvlent to a master menu
 
-#All the stuff i am importing for this code 
 from ast import Break, Return
 from datetime import date, datetime
 import os
 from pickle import FALSE, TRUE
 from re import A
 from time import sleep
+from tkinter import Y
 from turtle import clear
 from venv import create
 import os
@@ -20,7 +20,6 @@ from pathlib import Path
 from os import listdir
 from importlib.resources import path
 import getpass
-#end of me importing the stuff
 
 #this is a arry that will be displayed a random to welcom the user
 alecwlcome = ("Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot",)
@@ -29,19 +28,15 @@ alecwrong = ("Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","
  
 
 def math():
-    #starting of the math function by displaying a menu of what you can do
     print("--------Math-Menu--------")
     print("0 : Times a number 50 times")
     print("1 : -,+,*,/ two Numbers")
     print("m : to go back to menu")
     print("------------------------")
     print("q to quite the program")
-    
-    #asking for input for what the user wants to do
+
     I = input("Please choose a number or letter from above : ")
-    #doing a if statemte for if there is a capitals to make it lowercase if M/Q
     if(I == "Q") or (I == "M"):
-     #making it lowercase
         I = I.lower
 
     if(I == "0"):
@@ -135,188 +130,211 @@ def AdminMenu():
             a = readfile.readline()
             Adminpassword = readfile.readline()
 
+            a = a.strip("\n")
             Name = Name.strip("\n" + "Username : ")
             Adminpassword = Adminpassword.strip("\n" + "Password : ")
-    
+            
+
             if (ifpassword == Adminpassword):
-                admin1 = TRUE
-                admin = TRUE
-                if(admin):
-                    while(admin == TRUE):
-                        print("-------Admin-Menu-------")
-                        print("1 :add a admin")
-                        print("2 :cheack to see message")
-                        print("3 :message someone")
-                        print("4 :Change password")
-                        print("------------------------")
-                        print("[m]to got to prevoise menu and [q] to quit")
+                pauseuser = False
 
-                        inputt = input("Please enter in a number from above : ")
-                        
-                        if(inputt == "1"):
-                            #making a statmemt for my loop
-                            adduser = TRUE
-                            #starting my loop
-                            while(adduser == TRUE):
-                                
-                                #making sure the they want to make a admin with a yes or no
-                                INPUT = input("are you sure you want to add a user y or n : ")
+                if(a == "pause"):
+                        print("Sorry it seems that you account is pasue please message a admin for more help")
+                        pauseuser = True
+                        quit()
+                if(pauseuser == False):
+                    admin1 = TRUE
+                    admin = TRUE
+                    if(admin):
+                        while(admin == TRUE):
+                            print("-------Admin-Menu-------")
+                            print("1 :add a admin")
+                            print("2 :cheack to see message")
+                            print("3 :message someone")
+                            print("4 :Change password")
+                            print("------------------------")
+                            print("[m]to got to prevoise menu and [q] to quit")
 
-                                #Testing if they did no/n/N
-                                if(INPUT == "n") or (INPUT == "N"):
-                                    #bracking them out of the if statment
-                                    AdminMenu
-                                    #testing if they said yes or y/Y
-                                if (INPUT == "y") or (INPUT == "Y"):
+                            inputt = input("Please enter in a number from above : ")
+                            
+                            if(inputt == "1"):
+                                #making a statmemt for my loop
+                                adduser = TRUE
+                                #starting my loop
+                                while(adduser == TRUE):
                                     
-                                    #asking them what the name will be for the new user
-                                    Username = input("Enter in a Username : ")
+                                    #making sure the they want to make a admin with a yes or no
+                                    INPUT = input("are you sure you want to add a user y or n : ")
 
-                                    #puttung a path name to lisk all the in the adminsitator.txt
-                                    pathanmae1 = r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\adminusers.txt"
-                                    #testing to see if it exist
-                                    fileesits = os.path.exists(pathanmae1)
-                                    
-                                    #creating if if statemte if it does not exist
-                                    if(fileesits == False):
-                                        #creting the file if it does not exist
-                                        filecreate = open(r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\adminusers.txt","x")
-                                        #Closeing the file
-                                        filecreate.close
-                                    
-                                    Passwords = getpass.getpass("Plaese enter a password equal or grather then 8 : ")
-                                    passwordlenght = len(Passwords)
-                                        #testing the password lenth to make sure it is grather then or equal to 8
-                                    if (passwordlenght >= 8 ):
-
-                                        good = TRUE
-
-                                        count = -1
-                                        for list in dirtest:
-                                    
-                                            count = count + 1
-
-                                            dirtestL = dirtestL - 1
-
-                                            filethings = dirtest[count]
-
-                                            Files = filethings.strip("-")
-
-
-                                            pathaname = r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\-" + Files
-
-
-                                            readfile = open(pathaname,"r")
-                                            Name = readfile.readline()
-                                            a = readfile.readline()
-                                            Adminpassword = readfile.readline()
-
-                                            Name = Name.strip("\n" + "Username : ")
-                                            Adminpassword = Adminpassword.strip("\n" + "Password : ")
-                                    
-                                            if (Passwords == Adminpassword):
-                                                print("sorry the password you have entered incorect please enter in another one ")
-                                                good = FALSE
-                                            if(Name == Username):
-                                                good = FALSE
-                                                print("The username does not meet the requirements or are already in uses")
-                                            if(count == dirtestL): 
-                                                break
-                                        if(good == TRUE):
-
-                                            adminpathusers = r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\adminusers.txt"
-
-                                            line = open(adminpathusers,"r")
-
-
-                                            skipline =  "\n"
-                                            for yes in line: 
-
-                                                skipline = skipline + "\n"
-
-
-                                            line.close
-
-                                            line = open(adminpathusers,"a")
-                                            line.write(Username)
-                                            line.close
+                                    #Testing if they did no/n/N
+                                    if(INPUT == "n") or (INPUT == "N"):
+                                        #bracking them out of the if statment
+                                        AdminMenu
+                                        #testing if they said yes or y/Y
+                                    if (INPUT == "y") or (INPUT == "Y"):
                                         
-                                            pathanameCreate = r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\-" + Username + ".txt"
+                                        #asking them what the name will be for the new user
+                                        Username = input("Enter in a Username : ")
 
-                                            filecreate = open(pathanameCreate,"x")
+                                        #puttung a path name to lisk all the in the adminsitator.txt
+                                        pathanmae1 = r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\adminusers.txt"
+                                        #testing to see if it exist
+                                        fileesits = os.path.exists(pathanmae1)
+                                        
+                                        #creating if if statemte if it does not exist
+                                        if(fileesits == False):
+                                            #creting the file if it does not exist
+                                            filecreate = open(r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\adminusers.txt","x")
+                                            #Closeing the file
                                             filecreate.close
+                                        
+                                        Passwords = getpass.getpass("Plaese enter a password equal or grather then 8 : ")
+                                        passwordlenght = len(Passwords)
+                                            #testing the password lenth to make sure it is grather then or equal to 8
+                                        if (passwordlenght >= 8 ):
 
-                                            fileadd = open(pathanameCreate,"a")
-                                            fileadd.write("Username : " + Username + "\nPassword : " + Passwords)
+                                            good = TRUE
+
+                                            count = -1
+                                            for list in dirtest:
+                                        
+                                                count = count + 1
+
+                                                dirtestL = dirtestL 
+
+                                                filethings = dirtest[count]
+
+                                                Files2 = filethings.strip("-")
+
+
+                                                pathaname = r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\-" + Files2
+
+
+                                                readfile = open(pathaname,"r")
+                                                Name = readfile.readline()
+                                                a = readfile.readline()
+                                                Adminpassword = readfile.readline()
+
+                                                Name = Name.strip("\n" + "Username : ")
+                                                Adminpassword = Adminpassword.strip("\n" + "Password : ")
+                                        
+                                                if (Passwords == Adminpassword):
+                                                    print("sorry the password you have entered incorect please enter in another one ")
+                                                    good = FALSE
+                                                if(Name == Username):
+                                                    good = FALSE
+                                                    print("The username does not meet the requirements or are already in uses")
+                                                if(count == dirtestL): 
+                                                    break
+                                            if(good == TRUE):
+
+                                                adminpathusers = r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\adminusers.txt"
+
+                                                line = open(adminpathusers,"r")
+
+
+                                                skipline =  "\n"
+                                                for yes in line: 
+
+                                                    skipline = skipline + "\n"
+
+
+                                                line.close
+
+                                                line = open(adminpathusers,"a")
+                                                line.write(Username)
+                                                line.close
                                             
+                                                pathanameCreate = r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\-" + Username + ".txt"
 
-                                            print("new admin has be added")
-                                            adduser = FALSE
-                                    
+                                                fileadd = open(pathanameCreate,"a")
+                                                fileadd.write("Username : " + Username + "\n\nPassword : " + Passwords)
+                                                fileadd.flush()
+                                                
+
+                                                print("new admin has be added")
+                                                adduser = FALSE
+                                        
+                                        else:print("What you have entered is incorect")
+
                                     else:print("What you have entered is incorect")
+                    
+                            elif(inputt == "2"):
+                                msgcheck = open(pathaname,"r")
+                                msgcheck.readline()
+                                msgcheck.readline()
+                                msgcheck.readline()
+                                print(msgcheck.read())
 
-                                else:print("What you have entered is incorect")
-                
-                        elif(inputt == "2"):
-                            msgcheck = open(pathaname,"r")
-                            msgcheck.read()
+                            elif(inputt == "3"):
+                                print("correct Upper and lower case needed") 
+                                print("")
+                                othername = input("Please enter users name you wish to meassage : ")
 
-                        elif(inputt == "3"):
-                            print("correct Upper and lower case needed") 
-                            print("")
-                            othername = input("Please enter users name you wish to meassage : ")
-
-                            anotherpathaname =  r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\-" + othername + ".txt"
-                            
-                            testingpath = os.path.exists(anotherpathaname)
-
-                            if(testingpath == False):
-                                print("the name you have entered is incorect")
-                            
-                            else:
-
-                                inputtt = input("Plsae enter your the message you want to send : ")
-
-
-                                line = open(anotherpathaname,"r")
-
-
-                                skipline =  "\n"
-
-                                for yes in line: 
-
-                                    skipline = skipline + "\n"
-
-
-                                line.close
-
-                                line = open(anotherpathaname,"a")
-                                line.write("\n" +"\n" + Name + " : " +inputtt)
-
-                                print("Message has been sent")
-                            
-                        elif(inputt == "m") or (inputt == "M"):
-                            admin = FALSE
-                            menu1
-
-                        elif(inputt == "q") or (inputt == "Q"):
-                            admin = FALSE
-                            clear
-                            exit
-                        elif(inputt == "pause"):
-
-                            if(Name == "Riley"):
-                                theinput = input("greetings Riley who is it you would like to pause or unpause : ")
-
-
+                                anotherpathaname =  r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\-" + othername + ".txt"
                                 
+                                testingpath = os.path.exists(anotherpathaname)
+
+                                if(testingpath == False):
+                                    print("the name you have entered is incorect")
+                                
+                                else:
+
+                                    inputtt = input("Plsae enter your the message you want to send : ")
 
 
-            if(count == dirtestL):
-                print("Alec_Bot : my dude that is wrong *goble* *goble*")
-                admin = FALSE
-                if(admin == FALSE):
-                    menu1()
+                                    line = open(anotherpathaname,"r")
+
+
+                                    skipline =  "\n"
+
+                                    for yes in line: 
+
+                                        skipline = skipline + "\n"
+
+
+                                    line.close
+
+                                    line = open(anotherpathaname,"a")
+                                    line.write("\n" +"\n" + Name + " : " +inputtt)
+                                    line.flush()
+
+                                    print("Message has been sent")
+                                
+                            elif(inputt == "m") or (inputt == "M"):
+                                admin = FALSE
+                                menu1()
+
+                            elif(inputt == "q") or (inputt == "Q"):
+                                admin = FALSE
+                                clear
+                                exit()
+                            elif(inputt == "pause"):
+
+                                if(Name == "Riley"):
+                                    theseinput = input("greetings Riley who is it you would like to pause or unpause : ")
+                                    pauseuserpath =  r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\-" + theseinput
+                                    
+                                    testinguser = os.path.exists(pauseuserpath)
+                                    if(testinguser == True):
+                                        pasueauser = open(pauseuserpath,"a")
+                                        pasueauser.write("\npause")
+
+                                        print("the user has been pasue")
+
+                                    else:
+                                        print("Print the user you wish to pasue does not exist")
+
+
+
+                                    
+
+
+                if(count == dirtestL):
+                    print("Alec_Bot : my dude that is wrong *goble* *goble*")
+                    admin = FALSE
+                    if(admin == FALSE):
+                        menu1()
 
 
 def helpfulmenu():
@@ -375,7 +393,7 @@ def menu2():
     print("----------Menu--------")
     print("5 :Return to Previos menu")
     print("6 :Helpful tips")
-    print("")
+    print("7 :message a admin")
     print("---------------------")
     print("Enter [5]to return to previous menu")
 
