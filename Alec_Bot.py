@@ -4,6 +4,7 @@
 #
 #Purpose This will be a alec bot that will be equvlent to a master menu
 
+#begginging of the things i am importing\useing
 from ast import Break, Return
 from datetime import date, datetime
 import os
@@ -20,6 +21,7 @@ from pathlib import Path
 from os import listdir
 from importlib.resources import path
 import getpass
+#the end
 
 #this is a arry that will be displayed a random to welcom the user
 alecwlcome = ("Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot","Alec_Bot",)
@@ -152,6 +154,7 @@ def AdminMenu():
                             print("2 :cheack to see message")
                             print("3 :message someone")
                             print("4 :Change password")
+                            print("5 :see admins")
                             print("------------------------")
                             print("[m]to got to prevoise menu and [q] to quit")
 
@@ -237,13 +240,13 @@ def AdminMenu():
                                                 for yes in line: 
 
                                                     skipline = skipline + "\n"
-
-
-                                                line.close
+                                                skipline = skipline + "\n"
+                                            
 
                                                 line = open(adminpathusers,"a")
-                                                line.write(Username)
-                                                line.close
+                                                line.write("\n" + Username)
+                                                line.flush()
+                                                line.close()
                                             
                                                 pathanameCreate = r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\-" + Username + ".txt"
 
@@ -252,7 +255,7 @@ def AdminMenu():
                                                 fileadd.flush()
                                                 
 
-                                                print("new admin has be added")
+                                                print("new admin has been added")
                                                 adduser = FALSE
                                         
                                         else:print("What you have entered is incorect")
@@ -264,7 +267,7 @@ def AdminMenu():
                                 msgcheck.readline()
                                 msgcheck.readline()
                                 msgcheck.readline()
-                                print(msgcheck.read())
+                                print(msgcheck.read() + "\n")
 
                             elif(inputt == "3"):
                                 print("correct Upper and lower case needed") 
@@ -296,7 +299,7 @@ def AdminMenu():
                                     line.close
 
                                     line = open(anotherpathaname,"a")
-                                    line.write("\n" +"\n" + Name + " : " +inputtt)
+                                    line.write("\n" + Name + " : " +inputtt)
                                     line.flush()
 
                                     print("Message has been sent")
@@ -309,6 +312,13 @@ def AdminMenu():
                                 admin = FALSE
                                 clear
                                 exit()
+
+                            elif(inputt == "5"):
+                                seeadmins = r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\adminusers.txt"
+                                trueseeadmin = open(seeadmins,"r")
+                                print(trueseeadmin.read() + "\n")
+                                trueseeadmin.close()
+
                             elif(inputt == "pause"):
 
                                 if(Name == "Riley"):
@@ -318,23 +328,59 @@ def AdminMenu():
                                     testinguser = os.path.exists(pauseuserpath)
                                     if(testinguser == True):
                                         pasueauser = open(pauseuserpath,"a")
+                                        qwe = input("you you wan to pause/p or unpause/u ")
+                                        #if() or () or ():
+
+                                        #elif() or () or ():
                                         pasueauser.write("\npause")
 
                                         print("the user has been pasue")
 
                                     else:
-                                        print("Print the user you wish to pasue does not exist")
+                                        print("the user you wish to pasue does not exist")
+                            elif(inputt == "4"):
+
+                                otherofanotherpath = r"C:\Users\Rstjean\Documents\Command Scripts\Junk_Files\-" + Name
+                                apple = True
+                                good = False
+                                while(apple):
+                                    ask1 = getpass.getpass("Please enter in the old password :")
+                                    readingfile = open(pathaname,"r")
+                                    a = readingfile.readline()
+                                    b = readingfile.readline()
+                                    c = readingfile.readline()
+                                    e = readingfile.read()
+                                    e = "\n" + e
+                                    readingfile.close
+
+                                    d = c.strip("Password : " + "\n")
+                                    if(ask1 == d):
+                                            apple = False 
+                                            bc = True
 
 
+                                while(bc):
+                                    #enter in the new one twice
+                                    print("")
+                                    print("password must be above or equal to 8 characters")
+                                    print("")
+                                    askuser = getpass.getpass("Please enter in the new password :")
+                                    askuser2 = getpass.getpass("Please enter in the new password again :")
+                                    lenghtofpassword = len(askuser2)
+                                    if(askuser == askuser2):
+                                        if(lenghtofpassword >= 8):
+                                            bc =False
+                                            good = True
 
-                                    
+                                    else:print("the password that you have enterd does not mach please try gain")
 
+                                    while(good):
+                                        good = False
+                                        writting = open(otherofanotherpath,"w")
+                                        writting.write(a + b + "Password : "+ askuser2 + e)
+                                        writting.close
 
-                if(count == dirtestL):
-                    print("Alec_Bot : my dude that is wrong *goble* *goble*")
-                    admin = FALSE
-                    if(admin == FALSE):
-                        menu1()
+                                
 
 
 def helpfulmenu():
@@ -358,8 +404,7 @@ def functioninput1():
             intP = intP.lower
 
         if(intP == "0"):
-            todaysdate = datetime.today
-            print("Alec_Bot: todays date :",todaysdate)
+            print("Work in progress")
 
         elif(intP == "1"):
             math()
@@ -383,8 +428,8 @@ def functioninput1():
         elif(intP == "n"):
             menu2()
         elif(intP == "7"):
-            os.startfile(r"C:\Users\Rstjean\Documents\Command Scripts\Python\Python_Notes.py")
-            exit
+            print("what is it you would like to message a admin about")
+            
         else:print (alecwrong)
 
 
